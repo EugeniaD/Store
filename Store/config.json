@@ -1,0 +1,5 @@
+﻿{
+    "StoreApiUrl": "https://localhost:5501",
+    "DBConnectionString": "Data Source = (local); Initial Catalog = Store; Integrated Security=True;",
+    "isProduction": "true"
+}

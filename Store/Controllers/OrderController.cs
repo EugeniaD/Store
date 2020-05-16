@@ -58,8 +58,8 @@ namespace Store.API.Controllers
             return Problem($"Geting order failed {result.ExMessage}", statusCode: 520);
         }
 
-        // GET: api/order/by-dates
-        [HttpGet("by-dates")] 
+        // GET: api/order/between-dates
+        [HttpGet("between-dates")] 
         public async ValueTask<ActionResult<List<OrdersInTimePeriodOutputModel>>> GetOrdersByDates(ByDatesInputModel inputModel)
         {
             DateTime fromDate = Convert.ToDateTime(inputModel.FromDate);
@@ -74,8 +74,8 @@ namespace Store.API.Controllers
             return Problem($"Geting orders failed {result.ExMessage}", statusCode: 520);
         }
 
-        // GET: api/order/total-cost/by-warehouse
-        [HttpGet("total-cost/by-warehouse")]
+        // GET: api/order/total-cost-by-warehouse
+        [HttpGet("total-cost-by-warehouse")]
         public async ValueTask<ActionResult<List<WarehouseTotalCostOutputModel>>> GetTotalCostByWarehouse()
         {
             var result = await _orderRepository.GetTotalCostByWarehouse();
@@ -87,8 +87,8 @@ namespace Store.API.Controllers
             return Problem($"Geting total cost failed {result.ExMessage}", statusCode: 520);
         }
 
-        // GET: api/Order/total-cost/by-isforeign 
-        [HttpGet("total-cost/by-isforeign")]
+        // GET: api/Order/total-cost-by-isforeign 
+        [HttpGet("total-cost-by-isforeign")]
         public async ValueTask<ActionResult<SalesByIsForeignOutputModel>> GetTotalCostByIsForeign()
         {
             var result = await _orderRepository.GetTotalCostByIsForeign();

@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Store.API.Configuration;
 using Store.Core.ConfigurationOptions;
-
+using Microsoft.OpenApi.Models;
 namespace Store.API
 {
     public class Startup
@@ -22,7 +22,7 @@ namespace Store.API
 
             Configuration = builder.Build();
         }
-        
+
         public IConfiguration Configuration { get; }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -30,6 +30,10 @@ namespace Store.API
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c => c.SwaggerEndpoint(url: "/swagger/v1/swagger.json", name: "CRM.API V1"));
 
             app.UseStaticFiles();
 
@@ -59,6 +63,8 @@ namespace Store.API
             services.Configure<StorageOptions>(Configuration);
             services.Configure<UrlOptions>(Configuration);
 
+            services.AddSwaggerGen(c => c.SwaggerDoc(name: "v1", new OpenApiInfo { Title = "CRM.API", Version = "v1" }));
+
             var mappingConfig = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new AutomapperProfile());
@@ -66,6 +72,6 @@ namespace Store.API
 
             IMapper mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);
-        }       
+        }
     }
 }

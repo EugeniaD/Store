@@ -24,8 +24,8 @@ namespace Store.API.Controllers
         }
 
 
-        // GET: api/goods/best-selling/by-city
-        [HttpGet("best-selling/by-city")] 
+        // GET: api/goods/best-selling-by-warehouse
+        [HttpGet("best-selling-by-warehouse")] 
         public async ValueTask<ActionResult<List<BestSellingProductsOutputModel>>> GetBestSellingProductByCity()
         {
             var result = await _goodsRepository.GetBestSellingProductByCity();
@@ -37,8 +37,8 @@ namespace Store.API.Controllers
             return Problem($"Geting products failed {result.ExMessage}", statusCode: 520);
         }
 
-        // GET: api/goods/storage/available/moscow/not-available/spb/not-available
-        [HttpGet("storage/available/moscow/not-available/spb/not-available")] 
+        // GET: api/goods/available-storage-not-available-spb-moscow
+        [HttpGet("available-storage-not-available-spb-moscow")] 
         public async ValueTask<ActionResult<List<GoodsWithCategoryOutputModel>>> GetProductIsInStorageNoInSPBMoscow()
         {
             ReportTypeEnum reportType = ReportTypeEnum.GetProductIsInStorageNoInSPBMoscow;
@@ -79,8 +79,8 @@ namespace Store.API.Controllers
             return Problem($"Geting products failed {result.ExMessage}", statusCode: 520); ;
         }
 
-        // GET: api/goods/categories/more-than/2000
-        [HttpGet("categories/more-than/{number}")] 
+        // GET: api/goods/categories/have-more-than/2000
+        [HttpGet("categories/have-more-than/{number}")] 
         public async ValueTask<ActionResult<List<СategoriesAndProductsAmountOutputModel>>> GetСategoriesMoreThenXProducts(int number)
         {
             if (number <= 0) return BadRequest("Number of goods must be greater than 0");

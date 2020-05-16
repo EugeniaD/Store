@@ -9,8 +9,8 @@ namespace Store.API.Configuration
     {
         public AutomapperProfile()
         {
-            CreateMap<Warehouse, WarehouseOutputModel>();
-            CreateMap<Category, CategoryOutputModel>();
+            CreateMap<Warehouse, NamedOutputModel>();
+            CreateMap<Category, NamedOutputModel>();
 
 
             CreateMap<Goods, GoodsOutputModel>()

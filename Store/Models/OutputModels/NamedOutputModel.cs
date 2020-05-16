@@ -1,6 +1,6 @@
 ﻿namespace Store.API.Models.OutputModels
 {
-    public class CategoryOutputModel
+    public class NamedOutputModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

@@ -1,7 +1,7 @@
 ﻿using Store.Core;
+using Store.Core.Enums;
 using Store.DB.Models;
 using Store.DB.Storages;
-using StoreRepository.Common;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

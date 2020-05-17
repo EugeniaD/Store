@@ -1,4 +1,4 @@
-﻿namespace Store.Core
+﻿namespace Store.Core.Enums
 {
     public enum WarehouseEnum
     {

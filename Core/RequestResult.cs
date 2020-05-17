@@ -1,4 +1,4 @@
-﻿namespace StoreRepository.Common
+﻿namespace Store.Core
 {
     public class RequestResult<T>
     {

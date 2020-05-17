@@ -1,4 +1,4 @@
-﻿using Store.Core;
+﻿using Store.Core.Enums;
 using Store.DB.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;

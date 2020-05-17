@@ -1,5 +1,5 @@
 ﻿using Store.DB.Models;
-using StoreRepository.Common;
+using Store.Core;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

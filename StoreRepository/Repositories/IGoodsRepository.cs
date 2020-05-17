@@ -1,8 +1,8 @@
 ﻿using Store.Core;
 using Store.DB.Models;
-using StoreRepository.Common;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Store.Core.Enums;
 
 namespace StoreRepository.Repositories
 {

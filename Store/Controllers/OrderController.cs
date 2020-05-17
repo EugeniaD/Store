@@ -7,7 +7,7 @@ using Store.DB.Models;
 using AutoMapper;
 using Store.API.Models.OutputModels;
 using StoreRepository.Repositories;
-using Store.Core;
+using Store.Core.Enums;
 
 namespace Store.API.Controllers
 {

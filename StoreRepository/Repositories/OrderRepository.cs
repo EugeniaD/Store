@@ -4,14 +4,16 @@ using System.Threading.Tasks;
 using Store.Core;
 using Store.DB.Models;
 using Store.DB.Storages;
-using StoreRepository.Common;
+using Store.Core.Currencies;
+using Store.Core.Enums;
+
 
 namespace StoreRepository.Repositories
 {
     public class OrderRepository : IOrderRepository
     {
         private IOrderStorage _orderStorage;
-
+        private CurrencyRequest _sendRequest = new CurrencyRequest();
         public OrderRepository(IOrderStorage orderStorage)
         {
             _orderStorage = orderStorage;
@@ -21,27 +23,31 @@ namespace StoreRepository.Repositories
         public async ValueTask<RequestResult<Order>> AddOrder(Order model)
         {
             var result = new RequestResult<Order>();
+            DateTime today = DateTime.Today;
             try
             {
-                decimal rateResult = 1;
-                string path = "";
-                switch (model.Warehouse.Id)
+                if (CurrencyRates.ActualCurrencyRates == null || CurrencyRates.ActualCurrencyRates.Find(i => Equals(i.Date, today)).Date == null)
                 {
-                    case (int)WarehouseEnum.Minsk:
-                        path = "BYN";
-                        rateResult = await SendRequest.GetLocalCurrency(path);
-                        break;
-                    case (int)WarehouseEnum.Kiev:
-                        path = "UAH";
-                        rateResult = await SendRequest.GetLocalCurrency(path);
-                        break;
-                    default: break;
+                    string path = "";
+                    switch (model.Warehouse.Id)
+                    {
+                        case (int)WarehouseEnum.Minsk:
+                            path = "BYN";
+                            _sendRequest.GetLocalCurrency(path);
+                            break;
+                        case (int)WarehouseEnum.Kiev:
+                            path = "UAH";
+                            _sendRequest.GetLocalCurrency(path);
+                            break;
+                        default: break;
+                    }
+
                 }
 
 
                 foreach (OrderDetails item in model.OrderDetails)
                 {
-                    item.LocalPrice /= rateResult;
+                    item.LocalPrice /= CurrencyRates.ActualCurrencyRates.Find(i => Equals(i.Date, today)).Rate;
                 }
                 _orderStorage.TransactionStart();
                 result.RequestData = await _orderStorage.AddOrder(model);

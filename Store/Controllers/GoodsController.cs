@@ -4,7 +4,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Store.API.Models.InputModels;
 using Store.API.Models.OutputModels;
-using Store.Core;
+using Store.Core.Enums;
 using Store.DB.Models;
 using StoreRepository.Repositories;
 

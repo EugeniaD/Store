@@ -7,7 +7,7 @@ namespace Store.API
 {
   public class Program
   {
-    // git practice 1
+    // git practice 1-1
     public static async Task Main(string[] args)
     {
       var host = Host.CreateDefaultBuilder(args)

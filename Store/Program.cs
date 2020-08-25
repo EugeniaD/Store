@@ -7,14 +7,13 @@ namespace Store.API
 {
   public class Program
   {
-      //master git practice -1
-
-        public static async Task Main(string[] args)
-        {
-            var host = Host.CreateDefaultBuilder(args)
-                  .UseServiceProviderFactory(new AutofacServiceProviderFactory())
-                  .ConfigureWebHostDefaults(webHostBuilder => webHostBuilder.UseStartup<Startup>())
-                  .Build();
+    // git practice 1
+    public static async Task Main(string[] args)
+    {
+      var host = Host.CreateDefaultBuilder(args)
+            .UseServiceProviderFactory(new AutofacServiceProviderFactory())
+            .ConfigureWebHostDefaults(webHostBuilder => webHostBuilder.UseStartup<Startup>())
+            .Build();
 
       await host.RunAsync();
     }

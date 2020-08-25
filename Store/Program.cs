@@ -5,8 +5,8 @@ using Microsoft.Extensions.Hosting;
 
 namespace Store.API
 {
-    public class Program
-    {
+  public class Program
+  {
       //master git practice -1
 
         public static async Task Main(string[] args)
@@ -16,7 +16,7 @@ namespace Store.API
                   .ConfigureWebHostDefaults(webHostBuilder => webHostBuilder.UseStartup<Startup>())
                   .Build();
 
-            await host.RunAsync();
-        }
+      await host.RunAsync();
     }
+  }
 }

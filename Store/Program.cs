@@ -7,7 +7,7 @@ namespace Store.API
 {
   public class Program
   {
-    // git practice 1-1
+    // GIT PRACTICE
 
         public static async Task Main(string[] args)
         {
